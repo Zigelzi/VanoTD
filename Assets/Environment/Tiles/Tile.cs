@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    [SerializeField] GameObject towerPrefab;
+    [SerializeField] Tower towerPrefab;
     [SerializeField] GameObject tower;
 
     bool isBuildable = true;
+    public bool IsBuildable { get { return isBuildable; } }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +38,7 @@ public class Tile : MonoBehaviour
     {
         if (CanBuild())
         {
-            tower = Instantiate(towerPrefab, transform.position, Quaternion.identity, transform);
+            tower = towerPrefab.Build(towerPrefab, this);
             isBuildable = false;
             return true;
         } else
@@ -62,6 +64,7 @@ public class Tile : MonoBehaviour
         if (CanDestroy())
         {
             Destroy(tower);
+            tower = null;
             isBuildable = true;
             return true;
         } else
@@ -76,7 +79,6 @@ public class Tile : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1) && tower != null)
         {
-            Destroy(tower);
             return true;
         }
         else

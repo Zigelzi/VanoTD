@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Tower : MonoBehaviour
 {
@@ -17,8 +18,18 @@ public class Tower : MonoBehaviour
         
     }
 
-    void Build()
+    public GameObject Build(Tower tower, Tile tile)
     {
-        return;
+        GameObject builtTower;
+
+        if (tile.IsBuildable)
+        {
+            builtTower = Instantiate(tower, tile.transform.position, tile.transform.rotation, tile.transform).gameObject;
+            return builtTower;
+        } else
+        {
+            builtTower = null;
+            return builtTower;
+        }
     }
 }
