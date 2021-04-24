@@ -13,9 +13,12 @@ public class TileLabel : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        tileLabel = GetComponentInChildren<TextMeshPro>();
-        tileLabel.enabled = true;
-        SetTileText();
+        if (Debug.isDebugBuild)
+        {
+            tileLabel = GetComponentInChildren<TextMeshPro>();
+            tileLabel.enabled = true;
+            SetTileText();
+        }
     }
 
     // Update is called once per frame
@@ -25,6 +28,10 @@ public class TileLabel : MonoBehaviour
         {
             SetTileText();
             SetGameObjectName();
+        }
+        if (Debug.isDebugBuild)
+        {
+            ToggleLabels();
         }
     }
 
@@ -39,5 +46,13 @@ public class TileLabel : MonoBehaviour
     void SetGameObjectName()
     {
         gameObject.transform.name = $"Tile_{coordinates.x}_{coordinates.y}";
+    }
+
+    void ToggleLabels()
+    {
+        if (Input.GetKeyUp(KeyCode.C))
+        {
+            tileLabel.enabled = !tileLabel.enabled;
+        }
     }
 }

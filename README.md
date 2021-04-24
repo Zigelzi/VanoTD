@@ -17,21 +17,22 @@ Things to work on
 
 ### General gameplay
 - [x] Map has Väinölä and Pohjola
-- [ ] Single type of enemy spawns from Pohjola
+- [x] Single type of enemy spawns from Pohjola
 - [ ] Player loses lives when enemies reach Väinölä
 - [ ] Player receives money when they kill enemies
 
 
 ### Building
-- [ ] Player can build single tower
-- [ ] Player can destroy single tower
+- [x] Player can build single tower
+- [x] Player can destroy single tower
 - [ ] Player consumes money when building towers
 - [ ] Towers take time to build
 - [ ] Player can see what they're about to build
 - [ ] Player can select from different towers to build
 ### Enemies
-- [ ] Enemies move towards Väinölä via predefined path
+- [x] Enemies move towards Väinölä via predefined path
 - [ ] Enemies search their own path from Pohjola to Väinölä
+- [ ] Enemies have one waypoint in middle of their path between Pohjola and Väinölä
 - [ ] Enemies can only move on allowed tiles and area
 - [ ] Enemies recalculate their path when player builds new tower
 - [ ] Enemies health increases for every wave
@@ -39,7 +40,7 @@ Things to work on
 
 ### Models
 - [x] Model cannon tower
-  - [ ] Model projectile
+  - [x] Model projectile
 - [ ] Model spear tower
   - [ ] Model projectile
 - [ ] Model one enemy

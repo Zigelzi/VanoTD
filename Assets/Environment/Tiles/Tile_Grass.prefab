@@ -10,8 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8968146189899685485}
   - component: {fileID: 3584530515851520223}
+  - component: {fileID: 5696411136410250072}
+  - component: {fileID: 8271471699975065122}
   m_Layer: 0
-  m_Name: Tile_0_0
+  m_Name: Tile_Grass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,6 +48,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &5696411136410250072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5616810992490347143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 660f542a2d7038a4bbae535d1c2064a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerPrefab: {fileID: 1183109105846569565, guid: b92be25f3f58c224c80a20e30c04d90c, type: 3}
+--- !u!65 &8271471699975065122
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5616810992490347143}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 0.32875204, z: 10}
+  m_Center: {x: 0, y: 0.05, z: 0}
 --- !u!1 &5616810993214517618
 GameObject:
   m_ObjectHideFlags: 0
