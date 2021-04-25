@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Path
   - Tower_Weapon
+  - Projectile
   layers:
   - Default
   - TransparentFX

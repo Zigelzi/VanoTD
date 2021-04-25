@@ -48,7 +48,7 @@ public class EnemyMovement : MonoBehaviour
         ResetPosition();
     }
 
-    void ResetPosition()
+    public void ResetPosition()
     {
         if (path.Count > 0)
         {

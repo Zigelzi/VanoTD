@@ -11,6 +11,7 @@ public class TargetLocator : MonoBehaviour
     [SerializeField] Transform targetPosition;
 
     Transform weapon;
+    ParticleSystem projectile;
     
     // Start is called before the first frame update
     void Start()
@@ -32,9 +33,17 @@ public class TargetLocator : MonoBehaviour
             if (child.tag == "Tower_Weapon")
             {
                 weapon = child;
+                projectile = GetProjectile(weapon);
             }
         }
         return weapon;
+    }
+
+    ParticleSystem GetProjectile(Transform weapon)
+    {
+        if (weapon == null) { return null; }
+        ParticleSystem projectile = weapon.GetComponentInChildren<ParticleSystem>();
+        return projectile;
     }
 
     void AimWeapon()
@@ -46,7 +55,14 @@ public class TargetLocator : MonoBehaviour
         {
             float closesEnemyDistance = Vector3.Distance(transform.position, target.transform.position);
             weapon.LookAt(target.transform);
-            
+            if (closesEnemyDistance < towerRange)
+            {
+                Attack(true);
+            } else
+            {
+                Attack(false);
+                target = FindTarget();
+            }
         }
     }
 
@@ -76,5 +92,10 @@ public class TargetLocator : MonoBehaviour
         {
             return null;
         }
+    }
+
+    void Attack(bool isShooting) {
+        ParticleSystem.EmissionModule emissionModule = projectile.emission;
+        emissionModule.enabled = isShooting;
     }
 }
