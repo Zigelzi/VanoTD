@@ -6,8 +6,7 @@ public class Tile : MonoBehaviour
 {
     [SerializeField] Tower towerPrefab;
     [SerializeField] GameObject tower;
-
-    bool isBuildable = true;
+    [SerializeField] bool isBuildable = true;
     public bool IsBuildable { get { return isBuildable; } }
 
     // Start is called before the first frame update

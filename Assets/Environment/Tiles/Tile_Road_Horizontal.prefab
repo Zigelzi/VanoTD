@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6423638123750310161, guid: 37ea590331f71ca48a8c670c0af0b47c, type: 3}
+      propertyPath: isBuildable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6618607821604901070, guid: 37ea590331f71ca48a8c670c0af0b47c, type: 3}
       propertyPath: m_Name
       value: Tile_Road_Horizontal

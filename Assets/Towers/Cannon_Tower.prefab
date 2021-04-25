@@ -25,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 727076323002619391}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.972, y: 2.129, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.129, z: 0.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1183109107326352960}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &9168739491863888136
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4766,7 +4766,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4973734387028869240, guid: e4b69850aa91edb40bad51d3d8765049, type: 3}
+  - {fileID: -4973734387028869240, guid: ba08ffbf5b728c54cb232412a91d2fbf, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4822,6 +4822,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1183109105846569564}
   - component: {fileID: 8490413168838178329}
+  - component: {fileID: 319617160042482510}
   m_Layer: 0
   m_Name: Cannon_Tower
   m_TagString: Untagged
@@ -4858,6 +4859,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildCost: 10
+--- !u!114 &319617160042482510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1183109105846569565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a45ad2586bfa134488f73e7f33959913, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  towerRange: 20
+  targetPosition: {fileID: 0}
 --- !u!1 &1183109105988512417
 GameObject:
   m_ObjectHideFlags: 0
@@ -4952,7 +4968,7 @@ GameObject:
   - component: {fileID: 1183109107326352963}
   m_Layer: 0
   m_Name: Cannon
-  m_TagString: Untagged
+  m_TagString: Tower_Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4991,8 +5007,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4973734387028869240, guid: e4b69850aa91edb40bad51d3d8765049, type: 3}
-  - {fileID: -1444460858095362738, guid: e4b69850aa91edb40bad51d3d8765049, type: 3}
+  - {fileID: -4973734387028869240, guid: 19723bae5133f4441b455d4a8974291d, type: 3}
+  - {fileID: -1444460858095362738, guid: 19723bae5133f4441b455d4a8974291d, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5021,4 +5037,4 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1183109107326352961}
-  m_Mesh: {fileID: 369689273696691656, guid: e4b69850aa91edb40bad51d3d8765049, type: 3}
+  m_Mesh: {fileID: 369689273696691656, guid: 19723bae5133f4441b455d4a8974291d, type: 3}

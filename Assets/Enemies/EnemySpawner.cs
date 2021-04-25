@@ -33,7 +33,7 @@ public class EnemySpawner : MonoBehaviour
     void SetSpawnPosition()
     {
         // Update this to use the grid manager when it's implemented
-        spawnPosition = transform.position;
+        spawnPosition = new Vector3(50, 0, 40);
     }
 
     void PopulatePool()
