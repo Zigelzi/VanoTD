@@ -7,6 +7,13 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] int maxHealth = 100;
     [SerializeField] int currentHealth;
 
+    Enemy enemy;
+
+    void Start()
+    {
+        enemy = GetComponent<Enemy>();
+    }
+
     private void OnEnable()
     {
         currentHealth = maxHealth;
@@ -29,13 +36,9 @@ public class EnemyHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Die();
+            enemy.Die();
         }
     }
 
-    void Die()
-    {
-        gameObject.SetActive(false);
-
-    }
+    
 }

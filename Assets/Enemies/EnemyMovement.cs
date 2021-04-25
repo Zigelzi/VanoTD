@@ -7,8 +7,10 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] List<Waypoint> path = new List<Waypoint>();
     [SerializeField][Range(0, 50f)] float movementSpeed = 10f;
 
+    GameManager gameManager;
     void Awake()
     {
+        gameManager = FindObjectOfType<GameManager>();
         Transform pathParent = GameObject.FindGameObjectWithTag("Path").transform;
         foreach (Transform child in pathParent)
         {
@@ -43,9 +45,10 @@ public class EnemyMovement : MonoBehaviour
             }
         }
 
-        // If destination (last node) is reached, disable the GameObject
+        // If destination (last node) is reached, disable the GameObject and remove life from player
         gameObject.SetActive(false);
         ResetPosition();
+        gameManager.LoseLife();
     }
 
     public void ResetPosition()

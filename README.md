@@ -18,15 +18,17 @@ Things to work on
 ### General gameplay
 - [x] Map has Väinölä and Pohjola
 - [x] Single type of enemy spawns from Pohjola
+- [ ] Player has lives
+- [ ] Enemies spawn in waves
 - [ ] Player loses lives when enemies reach Väinölä
 - [ ] Player receives money when they kill enemies
 - [ ] Player can move the camera (with mouse?)
 
 ### Towers
-- [ ] Towers target enemies
-- [ ] Towers damage enemies with projectiles
-- [ ] Towers only emit projectile when shooting
-- [ ] Towers have attack range
+- [x] Towers target enemies
+- [x] Towers damage enemies with projectiles
+- [x] Towers only emit projectile when shooting
+- [x] Towers have attack range
 - [ ] 
 
 ### Building

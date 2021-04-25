@@ -11,7 +11,6 @@ public class EnemySpawner : MonoBehaviour
 
     GameObject[] objectPool;
     Vector3 spawnPosition;
-    public Vector3 SpawnPosition { get { return spawnPosition; } }
 
     void Awake()
     {
