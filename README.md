@@ -18,10 +18,10 @@ Things to work on
 ### General gameplay
 - [x] Map has Väinölä and Pohjola
 - [x] Single type of enemy spawns from Pohjola
-- [ ] Player has lives
+- [x] Player has lives
 - [ ] Enemies spawn in waves
-- [ ] Player loses lives when enemies reach Väinölä
-- [ ] Player receives money when they kill enemies
+- [x] Player loses lives when enemies reach Väinölä
+- [x] Player receives money when they kill enemies
 - [ ] Player can move the camera (with mouse?)
 
 ### Towers
@@ -34,7 +34,7 @@ Things to work on
 ### Building
 - [x] Player can build single tower
 - [x] Player can destroy single tower
-- [ ] Player consumes money when building towers
+- [x] Player consumes money when building towers
 - [ ] Towers take time to build
 - [ ] Player can see what they're about to build
 - [ ] Player can select from different towers to build
@@ -65,6 +65,7 @@ Things to work on
 ### UI
 - [ ] Players start from main menu
 - [ ] Players can see enemies health
-- [ ] Players can see their gold
+- [x] Players can see their gold
+- [x] Players can see their lives
 - [ ] Players can see current level
 

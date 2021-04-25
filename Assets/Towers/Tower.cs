@@ -5,26 +5,17 @@ using System;
 
 public class Tower : MonoBehaviour
 {
-    [SerializeField] int buildCost = 10;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField] int buildCost = 50;
 
     public GameObject Build(Tower tower, Tile tile)
     {
         GameObject builtTower;
+        Bank bank = FindObjectOfType<Bank>();
 
-        if (tile.IsBuildable)
+        if (tile.IsBuildable && bank.CanAfford(buildCost))
         {
             builtTower = Instantiate(tower, tile.transform.position, tile.transform.rotation, tile.transform).gameObject;
+            bank.Remove(buildCost);
             return builtTower;
         } else
         {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,12 +15,14 @@ public class GameManager : MonoBehaviour
     int restartDelay = 2;
     State gameState;
     Bank bank;
+    TextMeshProUGUI lifeDisplay;
 
     // Start is called before the first frame update
     void Start()
     {
-        currentLives = maxLives;
         bank = FindObjectOfType<Bank>();
+        lifeDisplay = GameObject.FindGameObjectWithTag("UI_LivesDisplay").GetComponent<TextMeshProUGUI>();
+        StartGame();
     }
 
     // Update is called once per frame
@@ -29,6 +32,13 @@ public class GameManager : MonoBehaviour
         {
             LoseGame();
         }
+    }
+
+    void StartGame()
+    {
+        gameState = State.Alive;
+        currentLives = maxLives;
+        lifeDisplay.text = $"Lives: {currentLives}";
     }
 
     void LoseGame()
@@ -46,5 +56,11 @@ public class GameManager : MonoBehaviour
     public void LoseLife()
     {
         currentLives -= 1;
+        UpdateLifeDisplay();
+    }
+
+    void UpdateLifeDisplay()
+    {
+        lifeDisplay.text = $"Lives: {currentLives}";
     }
 }

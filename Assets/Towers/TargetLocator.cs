@@ -12,17 +12,22 @@ public class TargetLocator : MonoBehaviour
 
     Transform weapon;
     ParticleSystem projectile;
+    GameManager gameManager;
     
     // Start is called before the first frame update
     void Start()
     {
         weapon = GetWeapon();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        AimWeapon();
+        if (gameManager.GameState == GameManager.State.Alive)
+        {
+            AimWeapon();
+        }
     }
 
     Transform GetWeapon()

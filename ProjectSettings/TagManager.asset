@@ -8,6 +8,8 @@ TagManager:
   - Path
   - Tower_Weapon
   - Projectile
+  - UI_GoldDisplay
+  - UI_LivesDisplay
   layers:
   - Default
   - TransparentFX
