@@ -43,7 +43,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3904e107a8c0c845a4ac254b1df1f35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waves:
+  - {fileID: 2693375748891153142, guid: 348d72ce2d356f24a9bea6c2a2e75a2e, type: 3}
+  - {fileID: 5020894822164242103, guid: 9804db34a05e5d2439e05a058afb170e, type: 3}
+  - {fileID: 7974930078065005668, guid: 633c890237d963c47a89e1c24b72b72d, type: 3}
   enemyPrefab: {fileID: 3668330093474798905, guid: 9e33bde7826c76f4b9069e8c03889cd7, type: 3}
-  poolSize: 5
+  enemyCount: 5
   spawnInterval: 3
   spawningEnabled: 1

@@ -19,10 +19,11 @@ Things to work on
 - [x] Map has Väinölä and Pohjola
 - [x] Single type of enemy spawns from Pohjola
 - [x] Player has lives
-- [ ] Enemies spawn in waves
+- [x] Enemies spawn in waves
 - [x] Player loses lives when enemies reach Väinölä
 - [x] Player receives money when they kill enemies
 - [ ] Player can move the camera (with mouse?)
+- [ ] Player has build time between waves
 
 ### Towers
 - [x] Towers target enemies
@@ -52,9 +53,9 @@ Things to work on
 - [ ] Enemies recalculate their path when player builds new tower
 - [ ] Enemies health increases for every wave
 - [ ] Each wave has own model with their own properties
-  - [ ] Wave 1: Snowball
-  - [ ] Wave 2: Mud monster
-  - [ ] Wave 3: Golem
+  - [x] Wave 1: Snowball
+  - [x] Wave 2: Mud monster
+  - [x] Wave 3: Golem
   - [ ] Wave 4: Spirit of Greed
   - [ ] Wave 5: Daughter of Pohjola
   - [ ] Boss: Louhi
@@ -66,6 +67,12 @@ Things to work on
   - [ ] Model projectile
 - [ ] Model one enemy
 - [ ] Model five enemies
+  - [ ] Model snowball
+  - [ ] Model mud monster
+  - [ ] Model golem
+  - [ ] Model spirit of greed
+  - [ ] Model daughter of Pohjola
+  - [ ] Model Louhi
 - [x] Model Väinölä
 - [x] Model Pohjola
 - [x] Model grass tiles
@@ -81,3 +88,5 @@ Things to work on
 - [ ] Players can see current level
 - [ ] Player can see the number and name of the wave
 
+### Tweaks & Fixes
+- [ ] Clear object pool after wave
