@@ -16,7 +16,7 @@ public class TileLabel : MonoBehaviour
         if (Debug.isDebugBuild)
         {
             tileLabel = GetComponentInChildren<TextMeshPro>();
-            tileLabel.enabled = true;
+            tileLabel.enabled = false;
             SetTileText();
         }
     }

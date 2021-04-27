@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] int currentLives;
 
     int restartDelay = 2;
-    State gameState;
+    [SerializeField] State gameState;
     Bank bank;
     TextMeshProUGUI lifeDisplay;
 
@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
     void LoseGame()
     {
         gameState = State.Defeated;
-        Invoke("RestartGame", restartDelay);
+        //Invoke("RestartGame", restartDelay);
     }
 
     void RestartGame()

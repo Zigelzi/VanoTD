@@ -10,10 +10,12 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] bool spawningEnabled = true;
 
     GameObject[] objectPool;
+    GameManager gameManager;
     Vector3 spawnPosition;
 
     void Awake()
     {
+        gameManager = FindObjectOfType<GameManager>();
         SetSpawnPosition();
         PopulatePool();
     }
@@ -48,7 +50,7 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator SpawnEnemies()
     {
-        while (spawningEnabled)
+        while (spawningEnabled && gameManager.GameState == GameManager.State.Alive)
         {
             for (int i = 0; i < objectPool.Length; i++)
             {

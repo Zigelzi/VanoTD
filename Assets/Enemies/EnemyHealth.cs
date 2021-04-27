@@ -19,7 +19,7 @@ public class EnemyHealth : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    private void OnParticleCollision(GameObject other)
+    public void DetectParticleCollision(GameObject other)
     {
         if (other.gameObject.tag == "Projectile")
         {
@@ -39,6 +39,8 @@ public class EnemyHealth : MonoBehaviour
             enemy.Die();
         }
     }
+
+    
 
     
 }

@@ -38,6 +38,11 @@ Things to work on
 - [ ] Towers take time to build
 - [ ] Player can see what they're about to build
 - [ ] Player can select from different towers to build
+  - [ ] Player can open build menu
+  - [ ] Player can see the available towers
+  - [ ] Player can see the cost of towers
+  - [ ] Player can select tower to be placed
+  - [ ] Player can place the selected tower
 
 ### Enemies
 - [x] Enemies move towards Väinölä via predefined path
@@ -47,6 +52,12 @@ Things to work on
 - [ ] Enemies recalculate their path when player builds new tower
 - [ ] Enemies health increases for every wave
 - [ ] Each wave has own model with their own properties
+  - [ ] Wave 1: Snowball
+  - [ ] Wave 2: Mud monster
+  - [ ] Wave 3: Golem
+  - [ ] Wave 4: Spirit of Greed
+  - [ ] Wave 5: Daughter of Pohjola
+  - [ ] Boss: Louhi
 
 ### Models
 - [x] Model cannon tower
@@ -68,4 +79,5 @@ Things to work on
 - [x] Players can see their gold
 - [x] Players can see their lives
 - [ ] Players can see current level
+- [ ] Player can see the number and name of the wave
 
