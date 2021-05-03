@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraInputManager : MonoBehaviour
 {
     [SerializeField] float panSpeed = 20f;
+    [SerializeField] float zoomSpeed = 20f;
     [SerializeField][Tooltip("In pixels")] float panBorderThickness = 100f;
 
     // Controls
@@ -22,6 +23,7 @@ public class CameraInputManager : MonoBehaviour
         if (MouseWithinBounds())
         {
             ReadMouseMovementInput();
+            ZoomCamera();
         }
     }
 
@@ -169,5 +171,25 @@ public class CameraInputManager : MonoBehaviour
         {
             return false;
         }
+    }
+
+    void ZoomCamera()
+    {
+        Vector3 cameraPosition = transform.position;
+
+        float scroll = Input.GetAxis("Mouse Wheel");
+        float zoomSpeedAmplification = 200f; // Scroll speed needs to be amplified so that camera moves in sensible speed
+        cameraPosition.y -= scroll * zoomSpeed * zoomSpeedAmplification * Time.deltaTime;
+        cameraPosition = ClampCameraZoom(cameraPosition);
+        transform.position = cameraPosition;
+    }
+
+    Vector3 ClampCameraZoom(Vector3 cameraPosition)
+    {
+        float minScrollLimit = 30f;
+        float maxScrollLimit = 120f;
+        Vector3 clampedCameraPosition = cameraPosition;
+        clampedCameraPosition.y = Mathf.Clamp(cameraPosition.y, minScrollLimit, maxScrollLimit);
+        return clampedCameraPosition;
     }
 }
