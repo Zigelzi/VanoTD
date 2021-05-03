@@ -65,7 +65,21 @@ public class CameraInputManager : MonoBehaviour
             cameraPosition.x += panSpeed * Time.deltaTime;
         }
 
+        cameraPosition = ClampCameraMovement(cameraPosition);
         transform.position = cameraPosition;
+    }
+
+    Vector3 ClampCameraMovement(Vector3 cameraPosition)
+    {
+        float horizontalBoundary = 90f; // Limit on X axis
+        float topBoundary = 100f; // Limit on Z axis
+        float bottomBoundary = -160f; // Limit on Z axis
+        Vector3 clampedCameraPosition = cameraPosition;
+
+        clampedCameraPosition.x = Mathf.Clamp(cameraPosition.x, -horizontalBoundary, horizontalBoundary);
+        clampedCameraPosition.z = Mathf.Clamp(cameraPosition.z, bottomBoundary, topBoundary);
+
+        return clampedCameraPosition;
     }
 
     bool MouseWithinBounds()

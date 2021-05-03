@@ -11,8 +11,6 @@ public class ParticleCollisionDetection : MonoBehaviour
     }
     private void OnParticleCollision(GameObject other)
     {
-
-        Debug.Log(other);
         enemyHealth.DetectParticleCollision(other);
     }
 }
