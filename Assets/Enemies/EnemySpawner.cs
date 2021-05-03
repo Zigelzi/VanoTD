@@ -38,7 +38,7 @@ public class EnemySpawner : MonoBehaviour
     void SetSpawnPosition()
     {
         // Update this to use the grid manager when it's implemented
-        spawnPosition = new Vector3(50, 0, 40);
+        spawnPosition = new Vector3(0, 0, 100);
     }
 
     IEnumerator SpawnWaves()
