@@ -1,16 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
+using UnityEngine.EventSystems;
 
 public class Tower : MonoBehaviour
 {
     [SerializeField] int buildCost = 50;
 
     public GameObject Build(Tower tower, Tile tile)
-    {
-        GameObject builtTower;
+    {   
+        GameObject builtTower = null;
         Bank bank = FindObjectOfType<Bank>();
+
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return builtTower;
+        }
 
         if (tile.IsBuildable && bank.CanAfford(buildCost))
         {
@@ -19,7 +24,6 @@ public class Tower : MonoBehaviour
             return builtTower;
         } else
         {
-            builtTower = null;
             return builtTower;
         }
     }

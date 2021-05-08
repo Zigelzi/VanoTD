@@ -20,7 +20,7 @@ public class MusicManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.M))
         {
-            ToggleMute();
+            ToggleMusic();
         }
     }
 
@@ -42,9 +42,10 @@ public class MusicManager : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void ToggleMute()
+    public bool ToggleMusic()
     {
         AudioSource audio = GetComponent<AudioSource>();
         audio.mute = !audio.mute;
+        return audio.mute;
     }
 }
