@@ -22,15 +22,7 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Check how many waves there is
-        // Populate object pool with first wave prefabs
-        // Spawn wave
-        // Wait until no enemies are present anymore
-        // Wait building period
-        // Populate object pool with next wave prefabs
-        // Spawn next wave
-        // Spawn waves until there's no more waves defined
-        // Player wins the game
+
         StartCoroutine(SpawnWaves());
 
     }

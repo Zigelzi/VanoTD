@@ -13,10 +13,11 @@ public class TileLabel : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        tileLabel = GetComponentInChildren<TextMeshPro>();
+        tileLabel.enabled = false;
         if (Debug.isDebugBuild)
         {
-            tileLabel = GetComponentInChildren<TextMeshPro>();
-            tileLabel.enabled = false;
+            
             SetTileText();
         }
     }
@@ -24,7 +25,7 @@ public class TileLabel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!Application.isPlaying)
+        if (!Application.isPlaying && Debug.isDebugBuild)
         {
             SetTileText();
             SetGameObjectName();

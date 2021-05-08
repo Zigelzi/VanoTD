@@ -8,15 +8,19 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] int currentHealth;
 
     Enemy enemy;
+    HealthBar healthBar;
 
     void Start()
     {
         enemy = GetComponent<Enemy>();
+        healthBar = transform.GetComponentInChildren<HealthBar>();
     }
 
     private void OnEnable()
     {
         currentHealth = maxHealth;
+        healthBar = transform.GetComponentInChildren<HealthBar>();
+        healthBar.SetMaxHealth(maxHealth);
     }
 
     public void DetectParticleCollision(GameObject other)
@@ -32,6 +36,7 @@ public class EnemyHealth : MonoBehaviour
         if (damage > 0)
         {
             currentHealth -= damage;
+            healthBar.UpdateHealth(currentHealth);
         }
 
         if (currentHealth <= 0)
