@@ -74,7 +74,6 @@ public class CameraInputManager : MonoBehaviour
     Vector3 ClampCameraMovement(Vector3 cameraPosition)
     {
         // Play area isn't centered to 0,0 so take the offset into account when clamping the camera position
-        float cameraOffset = 100f;
         float leftBoundary = 0f; // Limit on X axis
         float rightBoundary = 200f; // Limit on X axis
         float topBoundary = 200f; // Limit on Z axis

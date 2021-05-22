@@ -7,18 +7,24 @@ using TMPro;
 public class TileLabel : MonoBehaviour
 {
     [SerializeField] Color defaultColor = Color.white;
+    [SerializeField] Color blockedColor = Color.gray;
+    [SerializeField] Color walkableColour = Color.green;
+    [SerializeField] Color exploredColour = new Color(0.85f, 0.4f, 0.7f);
+    [SerializeField] Color pathColour = Color.yellow;
 
     TextMeshPro tileLabel;
     Vector2Int coordinates = new Vector2Int();
+    GridManager gridManager;
     // Start is called before the first frame update
     void Awake()
     {
+        gridManager = FindObjectOfType<GridManager>();
         tileLabel = GetComponentInChildren<TextMeshPro>();
         tileLabel.enabled = false;
         if (Debug.isDebugBuild)
         {
-            
             SetTileText();
+            SetLabelColor();
         }
     }
 
@@ -30,10 +36,12 @@ public class TileLabel : MonoBehaviour
             tileLabel.enabled = true;
             SetTileText();
             SetGameObjectName();
+
         }
         if (Debug.isDebugBuild)
         {
             ToggleLabels();
+            SetLabelColor();
         }
     }
 
@@ -48,6 +56,37 @@ public class TileLabel : MonoBehaviour
     void SetGameObjectName()
     {
         gameObject.transform.name = $"Tile_{coordinates.x}_{coordinates.y}";
+    }
+
+    void SetLabelColor()
+    {
+        if (gridManager == null) { return; }
+
+        Node node = gridManager.GetNode(coordinates);
+
+        if (node == null) { return; }
+
+        if (!node.isWalkable)
+        {
+            tileLabel.color = blockedColor;
+        }
+        else if (node.isPath)
+        {
+            tileLabel.color = pathColour;
+        }
+        else if (node.isExplored) {
+            tileLabel.color = exploredColour;
+        } 
+        else if (node.isWalkable)
+        {
+            tileLabel.color = walkableColour;
+        }
+        else
+        {
+            tileLabel.color = defaultColor;
+        }
+        
+
     }
 
     void ToggleLabels()
