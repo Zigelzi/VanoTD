@@ -11,12 +11,12 @@ public class EnemySpawner : MonoBehaviour
 
     GameObject[] objectPool;
     GameManager gameManager;
-    Vector3 spawnPosition;
+    [SerializeField] Vector3 spawnPosition;
 
     void Awake()
     {
         gameManager = FindObjectOfType<GameManager>();
-        SetSpawnPosition();
+        //SetSpawnPosition();
     }
 
     // Start is called before the first frame update

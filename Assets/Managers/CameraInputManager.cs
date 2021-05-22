@@ -73,12 +73,15 @@ public class CameraInputManager : MonoBehaviour
 
     Vector3 ClampCameraMovement(Vector3 cameraPosition)
     {
-        float horizontalBoundary = 90f; // Limit on X axis
-        float topBoundary = 100f; // Limit on Z axis
-        float bottomBoundary = -160f; // Limit on Z axis
+        // Play area isn't centered to 0,0 so take the offset into account when clamping the camera position
+        float cameraOffset = 100f;
+        float leftBoundary = 0f; // Limit on X axis
+        float rightBoundary = 200f; // Limit on X axis
+        float topBoundary = 200f; // Limit on Z axis
+        float bottomBoundary = -50f; // Limit on Z axis
         Vector3 clampedCameraPosition = cameraPosition;
 
-        clampedCameraPosition.x = Mathf.Clamp(cameraPosition.x, -horizontalBoundary, horizontalBoundary);
+        clampedCameraPosition.x = Mathf.Clamp(cameraPosition.x, leftBoundary, rightBoundary);
         clampedCameraPosition.z = Mathf.Clamp(cameraPosition.z, bottomBoundary, topBoundary);
 
         return clampedCameraPosition;

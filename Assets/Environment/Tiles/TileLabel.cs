@@ -27,6 +27,7 @@ public class TileLabel : MonoBehaviour
     {
         if (!Application.isPlaying && Debug.isDebugBuild)
         {
+            tileLabel.enabled = true;
             SetTileText();
             SetGameObjectName();
         }
