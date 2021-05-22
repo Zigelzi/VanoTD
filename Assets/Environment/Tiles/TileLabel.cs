@@ -8,7 +8,6 @@ public class TileLabel : MonoBehaviour
 {
     [SerializeField] Color defaultColor = Color.white;
     [SerializeField] Color blockedColor = Color.gray;
-    [SerializeField] Color walkableColour = Color.green;
     [SerializeField] Color exploredColour = new Color(0.85f, 0.4f, 0.7f);
     [SerializeField] Color pathColour = Color.yellow;
 
@@ -77,10 +76,6 @@ public class TileLabel : MonoBehaviour
         else if (node.isExplored) {
             tileLabel.color = exploredColour;
         } 
-        else if (node.isWalkable)
-        {
-            tileLabel.color = walkableColour;
-        }
         else
         {
             tileLabel.color = defaultColor;

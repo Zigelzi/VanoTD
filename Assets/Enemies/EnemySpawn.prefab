@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2160451569021484422}
   - component: {fileID: 2160451569021484423}
+  - component: {fileID: -707307961945585910}
   m_Layer: 0
   m_Name: EnemySpawn
   m_TagString: Untagged
@@ -47,7 +48,23 @@ MonoBehaviour:
   - {fileID: 2693375748891153142, guid: 348d72ce2d356f24a9bea6c2a2e75a2e, type: 3}
   - {fileID: 5020894822164242103, guid: 9804db34a05e5d2439e05a058afb170e, type: 3}
   - {fileID: 7974930078065005668, guid: 633c890237d963c47a89e1c24b72b72d, type: 3}
-  enemyPrefab: {fileID: 3668330093474798905, guid: 9e33bde7826c76f4b9069e8c03889cd7, type: 3}
   enemyCount: 5
   spawnInterval: 3
-  spawningEnabled: 1
+  spawnPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &-707307961945585910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2160451569021484421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8de875f5296f22c489a8fabeb9876007, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentSearchNode:
+    coordinates: {x: 10, y: 20}
+    isWalkable: 0
+    isExplored: 0
+    isPath: 0
