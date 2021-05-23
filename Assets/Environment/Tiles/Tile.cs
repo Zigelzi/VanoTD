@@ -9,16 +9,25 @@ public class Tile : MonoBehaviour
     [SerializeField] bool isBuildable = true;
     public bool IsBuildable { get { return isBuildable; } }
 
+    GridManager gridManager;
+    Vector2Int tileCoordinates = new Vector2Int();
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        gridManager = FindObjectOfType<GridManager>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
-        
+        if (gridManager != null)
+        {
+            tileCoordinates = gridManager.GetCoordinatesFromPosition(transform.position);
+            if (!isBuildable)
+            {
+                gridManager.BlockNode(tileCoordinates);
+            }
+        }
     }
 
     // OnMouseDown registers only left click
@@ -39,6 +48,8 @@ public class Tile : MonoBehaviour
         {
             tower = towerPrefab.Build(towerPrefab, this);
             isBuildable = false;
+            gridManager.BlockNode(tileCoordinates);
+
             return true;
         } else
         {
@@ -65,14 +76,14 @@ public class Tile : MonoBehaviour
             Destroy(tower);
             tower = null;
             isBuildable = true;
+            gridManager.UnblockNode(tileCoordinates);
+
             return true;
         } else
         {
             return false;
         }
     }
-
-    
 
     bool CanDestroy()
     {

@@ -5,7 +5,11 @@ using UnityEngine;
 public class GridManager : MonoBehaviour
 {
     [SerializeField] Vector2Int gridSize;
+
+    int unityGridSize = 10;
+    public int UnityGridSize { get { return unityGridSize; } }
     Dictionary<Vector2Int, Node> grid = new Dictionary<Vector2Int, Node>();
+    
     public Dictionary<Vector2Int, Node> Grid { get { return grid; } }
 
     void Awake()
@@ -22,6 +26,52 @@ public class GridManager : MonoBehaviour
         {
             return null;
         }
+    }
+
+    public bool BlockNode(Vector2Int coordinates)
+    {
+        if(grid.ContainsKey(coordinates))
+        {
+            grid[coordinates].isWalkable = false;
+            return true;
+        } else
+        {
+            return false;
+        }
+    }
+
+    public bool UnblockNode(Vector2Int coordinates)
+    {
+        if (grid.ContainsKey(coordinates))
+        {
+            grid[coordinates].isWalkable = true;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    // Convert world position into coordinates
+    public Vector2Int GetCoordinatesFromPosition(Vector3 position)
+    {
+        Vector2Int coordinates = new Vector2Int();
+
+        coordinates.x = Mathf.RoundToInt(position.x / unityGridSize);
+        coordinates.y = Mathf.RoundToInt(position.z / unityGridSize);
+
+        return coordinates;
+    }
+
+    // Convert coordinate into world position
+    public Vector3 GetPositionFromCoordinates(Vector2Int coordinates)
+    {
+        Vector3 position = new Vector3();
+        position.x = Mathf.RoundToInt(coordinates.x * unityGridSize);
+        position.z = Mathf.RoundToInt(coordinates.y * unityGridSize);
+
+        return position;
     }
 
     void CreateGrid()

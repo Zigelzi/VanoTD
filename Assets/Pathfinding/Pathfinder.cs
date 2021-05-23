@@ -26,14 +26,14 @@ public class Pathfinder : MonoBehaviour
         {
             grid = gridManager.Grid;
         }
-
-        startNode = new Node(startCoordinates, true);
-        destinationNode = new Node(destinationCoordinates, true);
     }
 
     private void Start()
     {
+        startNode = grid[startCoordinates];
+        destinationNode = grid[destinationCoordinates];
         BreathFirstSearch();
+        BuildPath();
     }
 
     void ExploreNeighbors(Node node)
@@ -53,6 +53,7 @@ public class Pathfinder : MonoBehaviour
         {
             if (!reached.ContainsKey(neighbor.coordinates) &&  neighbor.isWalkable)
             {
+                neighbor.connectedTo = currentSearchNode;
                 reached.Add(neighbor.coordinates, neighbor);
                 frontier.Enqueue(neighbor);
             }
@@ -70,13 +71,35 @@ public class Pathfinder : MonoBehaviour
         {
             currentSearchNode = frontier.Dequeue();
             currentSearchNode.isExplored = true;
-            ExploreNeighbors(currentSearchNode);
             if (currentSearchNode.coordinates == destinationCoordinates)
             {
-                isRunning = false;
+                isRunning = false; 
             }
+            ExploreNeighbors(currentSearchNode);
+            
         } 
 
+    }
+
+    List<Node> BuildPath()
+    {
+        List<Node> path = new List<Node>();
+
+        // Start creating path from destination
+        Node currentNode = destinationNode;
+        path.Add(currentNode);
+        currentNode.isPath = true;
+
+        while (currentNode.connectedTo != null)
+        {
+            // Continue traversing the connected nodes until there's no remaining nodes, so we're at the beginning
+            currentNode = currentNode.connectedTo;
+            path.Add(currentNode);
+            currentNode.isPath = true;
+        }
+
+        path.Reverse();
+        return path;
     }
 
 }

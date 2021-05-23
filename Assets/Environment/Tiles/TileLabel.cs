@@ -46,9 +46,8 @@ public class TileLabel : MonoBehaviour
 
     void SetTileText()
     {
-        float gridSize = 10;
-        coordinates.x = Mathf.RoundToInt(transform.position.x / gridSize);
-        coordinates.y = Mathf.RoundToInt(transform.position.z / gridSize);
+        coordinates.x = Mathf.RoundToInt(transform.position.x / gridManager.UnityGridSize);
+        coordinates.y = Mathf.RoundToInt(transform.position.z / gridManager.UnityGridSize);
         tileLabel.text = $"{coordinates.x}, {coordinates.y}";
     }
 
