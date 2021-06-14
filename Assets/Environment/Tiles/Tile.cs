@@ -10,12 +10,14 @@ public class Tile : MonoBehaviour
     public bool IsBuildable { get { return isBuildable; } }
 
     GridManager gridManager;
+    Pathfinder pathFinder;
     Vector2Int tileCoordinates = new Vector2Int();
 
     // Start is called before the first frame update
     void Awake()
     {
         gridManager = FindObjectOfType<GridManager>();
+        pathFinder = FindObjectOfType<Pathfinder>();
     }
 
     void Start()
@@ -59,7 +61,12 @@ public class Tile : MonoBehaviour
 
     bool CanBuild()
     {
-        if (Input.GetMouseButtonDown(0) && isBuildable && towerPrefab != null)
+        if (Input.GetMouseButtonDown(0) &&
+            isBuildable &&
+            towerPrefab != null &&
+            gridManager.GetNode(tileCoordinates).isWalkable &&
+            !pathFinder.WillBlockPath(tileCoordinates)
+            )
         {
             return true;
         }

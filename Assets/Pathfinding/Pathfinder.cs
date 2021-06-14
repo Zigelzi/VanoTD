@@ -32,36 +32,21 @@ public class Pathfinder : MonoBehaviour
     {
         startNode = grid[startCoordinates];
         destinationNode = grid[destinationCoordinates];
-        BreathFirstSearch();
-        BuildPath();
+        GetNewPath();
     }
 
-    void ExploreNeighbors(Node node)
+    public List<Node> GetNewPath()
     {
-        List<Node> neighbors = new List<Node>();
-        foreach (Vector2Int direction in directions)
-        {
-            Vector2Int neighborCoordinates = node.coordinates + direction;
-            if (grid.ContainsKey(neighborCoordinates))
-            {
-                neighbors.Add(grid[neighborCoordinates]);
-
-            }
-        }
-
-        foreach (Node neighbor in neighbors)
-        {
-            if (!reached.ContainsKey(neighbor.coordinates) &&  neighbor.isWalkable)
-            {
-                neighbor.connectedTo = currentSearchNode;
-                reached.Add(neighbor.coordinates, neighbor);
-                frontier.Enqueue(neighbor);
-            }
-        }
+        gridManager.ResetNodes();
+        BreathFirstSearch();
+        return BuildPath();
     }
 
     void BreathFirstSearch()
     {
+        frontier.Clear();
+        reached.Clear();
+
         bool isRunning = true;
 
         frontier.Enqueue(startNode);
@@ -79,6 +64,30 @@ public class Pathfinder : MonoBehaviour
             
         } 
 
+    }
+
+    void ExploreNeighbors(Node node)
+    {
+        List<Node> neighbors = new List<Node>();
+        foreach (Vector2Int direction in directions)
+        {
+            Vector2Int neighborCoordinates = node.coordinates + direction;
+            if (grid.ContainsKey(neighborCoordinates))
+            {
+                neighbors.Add(grid[neighborCoordinates]);
+
+            }
+        }
+
+        foreach (Node neighbor in neighbors)
+        {
+            if (!reached.ContainsKey(neighbor.coordinates) && neighbor.isWalkable)
+            {
+                neighbor.connectedTo = currentSearchNode;
+                reached.Add(neighbor.coordinates, neighbor);
+                frontier.Enqueue(neighbor);
+            }
+        }
     }
 
     List<Node> BuildPath()
@@ -100,6 +109,29 @@ public class Pathfinder : MonoBehaviour
 
         path.Reverse();
         return path;
+    }
+
+    public bool WillBlockPath(Vector2Int coordinates)
+    {
+        if (grid.ContainsKey(coordinates))
+        {
+            bool previousState = grid[coordinates].isWalkable;
+
+            grid[coordinates].isWalkable = false;
+            List<Node> newPath = GetNewPath();
+            grid[coordinates].isWalkable = previousState;
+
+            if (newPath.Count <= 1)
+            {
+                // Path is blocked if newPath is shorter or equal to 1 node long
+                GetNewPath();
+                return true;
+            }
+            // Path is not blocked if pathfinding is able to find newPath that is longer than 1 node
+
+        }
+
+        return false;
     }
 
 }

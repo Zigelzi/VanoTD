@@ -53,6 +53,16 @@ public class GridManager : MonoBehaviour
         }
     }
 
+    public void ResetNodes()
+    {
+        foreach(KeyValuePair<Vector2Int, Node> node in grid)
+        {
+            node.Value.connectedTo = null;
+            node.Value.isExplored = false;
+            node.Value.isPath = false;
+        }
+    }
+
     // Convert world position into coordinates
     public Vector2Int GetCoordinatesFromPosition(Vector3 position)
     {
