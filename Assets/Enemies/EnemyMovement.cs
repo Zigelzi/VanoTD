@@ -4,22 +4,23 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] List<Waypoint> path = new List<Waypoint>();
+    
     [SerializeField][Range(0, 50f)] float movementSpeed = 10f;
 
     GameManager gameManager;
+    GridManager gridManager;
+    Pathfinder pathFinder;
+    List<Node> path = new List<Node>();
     void Awake()
     {
         gameManager = FindObjectOfType<GameManager>();
-        Transform pathParent = GameObject.FindGameObjectWithTag("Path").transform;
-        foreach (Transform child in pathParent)
-        {
-            path.Add(child.GetComponent<Waypoint>());
-        }
+        gridManager = FindObjectOfType<GridManager>();
+        pathFinder = FindObjectOfType<Pathfinder>();
     }
 
     void OnEnable()
     {
+        FindPath();
         if (path.Count > 0)
         {
             StartCoroutine(FollowPath());
@@ -27,36 +28,43 @@ public class EnemyMovement : MonoBehaviour
         
     }
 
+    void FindPath()
+    {
+        path.Clear();
+
+        path = pathFinder.GetNewPath();
+    }
+
+    
+
     IEnumerator FollowPath()
     {
         for (int i = 1; i < path.Count; i++)
         {
             Vector3 startingPosition = transform.position;
-            Vector3 destinationPosition = path[i].transform.position;
+
+            Vector2Int nextNodeCoordinates = path[i].coordinates;
+            Vector3 nextNodePosition = gridManager.GetPositionFromCoordinates(nextNodeCoordinates);
             float travelPercent = 0f;
 
-            transform.LookAt(destinationPosition);
+            transform.LookAt(nextNodePosition);
 
             while (travelPercent < 1f)
             {
                 travelPercent += Time.deltaTime * movementSpeed;
-                transform.position = Vector3.Lerp(startingPosition, destinationPosition, travelPercent);
+                transform.position = Vector3.Lerp(startingPosition, nextNodePosition, travelPercent);
                 yield return new WaitForEndOfFrame();
             }
         }
 
         // If destination (last node) is reached, disable the GameObject and remove life from player
         gameObject.SetActive(false);
-        ResetPosition();
+        ReturnToStart();
         gameManager.LoseLife();
     }
-
-    public void ResetPosition()
+    public void ReturnToStart()
     {
-        if (path.Count > 0)
-        {
-            transform.position = path[0].transform.position;
-        }
-        
+        Vector2Int startCoordinates = pathFinder.StartCoordinates;
+        transform.position = gridManager.GetPositionFromCoordinates(startCoordinates);
     }
 }

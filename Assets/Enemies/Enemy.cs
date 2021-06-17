@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
     public void Die()
     {
         gameObject.SetActive(false);
-        movement.ResetPosition();
+        movement.ReturnToStart();
         bank.Add(killReward);
     }
 }
