@@ -18,10 +18,6 @@ public class Tile : MonoBehaviour
     {
         gridManager = FindObjectOfType<GridManager>();
         pathFinder = FindObjectOfType<Pathfinder>();
-    }
-
-    void Start()
-    {
         if (gridManager != null)
         {
             tileCoordinates = gridManager.GetCoordinatesFromPosition(transform.position);
@@ -30,6 +26,11 @@ public class Tile : MonoBehaviour
                 gridManager.BlockNode(tileCoordinates);
             }
         }
+    }
+
+    void Start()
+    {
+        
     }
 
     // OnMouseDown registers only left click

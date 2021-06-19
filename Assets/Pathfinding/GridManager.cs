@@ -17,6 +17,19 @@ public class GridManager : MonoBehaviour
         CreateGrid();    
     }
 
+    void CreateGrid()
+    {
+        for (int x = 0; x < gridSize.x; x++)
+        {
+            for (int y = 0; y < gridSize.y; y++)
+            {
+                Vector2Int coordinates = new Vector2Int(x, y);
+                Node currentNode = new Node(coordinates, true);
+                grid.Add(coordinates, currentNode);
+            }
+        }
+    }
+
     public Node GetNode(Vector2Int coordinates)
     {
         if (grid.ContainsKey(coordinates))
@@ -82,18 +95,5 @@ public class GridManager : MonoBehaviour
         position.z = Mathf.RoundToInt(coordinates.y * unityGridSize);
 
         return position;
-    }
-
-    void CreateGrid()
-    {
-        for (int x = 0; x < gridSize.x; x++)
-        {
-            for (int y = 0; y < gridSize.y; y++)
-            {
-                Vector2Int coordinates = new Vector2Int(x, y);
-                Node currentNode = new Node(coordinates, true);
-                grid.Add(coordinates, currentNode);
-            }
-        }
     }
 }

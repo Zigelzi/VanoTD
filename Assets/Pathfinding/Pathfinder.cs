@@ -47,6 +47,9 @@ public class Pathfinder : MonoBehaviour
 
     void BreathFirstSearch()
     {
+        startNode.isWalkable = true;
+        destinationNode.isWalkable = true;
+
         frontier.Clear();
         reached.Clear();
 
