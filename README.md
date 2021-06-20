@@ -22,7 +22,7 @@ Things to work on
 - [x] Enemies spawn in waves
 - [x] Player loses lives when enemies reach Väinölä
 - [x] Player receives money when they kill enemies
-- [ ] Player can move the camera (with mouse?)
+- [x] Player can move the camera (with mouse?)
 - [ ] Player has build time between waves
 
 ### Towers
@@ -47,10 +47,10 @@ Things to work on
 
 ### Enemies
 - [x] Enemies move towards Väinölä via predefined path
-- [ ] Enemies search their own path from Pohjola to Väinölä
+- [x] Enemies search their own path from Pohjola to Väinölä
 - [ ] Enemies have one waypoint in middle of their path between Pohjola and Väinölä
-- [ ] Enemies can only move on allowed tiles and area
-- [ ] Enemies recalculate their path when player builds new tower
+- [x] Enemies can only move on allowed tiles and area
+- [x] Enemies recalculate their path when player builds new tower
 - [ ] Enemies health increases for every wave
 - [ ] Each wave has own model with their own properties
   - [x] Wave 1: Snowball
@@ -82,7 +82,7 @@ Things to work on
 
 ### UI
 - [ ] Players start from main menu
-- [ ] Players can see enemies health
+- [x] Players can see enemies health
 - [x] Players can see their gold
 - [x] Players can see their lives
 - [ ] Players can see current level

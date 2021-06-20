@@ -28,15 +28,18 @@ public class Tile : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        
-    }
-
     // OnMouseDown registers only left click
     void OnMouseDown()
     {
-        PlaceTower();   
+        bool towerBuiltSuccessfully = PlaceTower();
+
+        if (towerBuiltSuccessfully)
+        {
+            isBuildable = false;
+            gridManager.BlockNode(tileCoordinates);
+            pathFinder.NotifyReceivers();
+        }
+
     }
 
     void OnMouseOver()
@@ -50,9 +53,6 @@ public class Tile : MonoBehaviour
         if (CanBuild())
         {
             tower = towerPrefab.Build(towerPrefab, this);
-            isBuildable = false;
-            gridManager.BlockNode(tileCoordinates);
-
             return true;
         } else
         {

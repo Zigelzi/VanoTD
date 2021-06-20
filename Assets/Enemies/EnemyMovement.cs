@@ -20,19 +20,30 @@ public class EnemyMovement : MonoBehaviour
 
     void OnEnable()
     {
-        FindPath();
+        RecalculatePath(true);   
+        
+    }
+
+    void RecalculatePath(bool resetPath)
+    {
+        Vector2Int coordinates = new Vector2Int();
+        if (resetPath)
+        {
+            coordinates = pathFinder.StartCoordinates;
+        }
+        else
+        {
+            coordinates = gridManager.GetCoordinatesFromPosition(transform.position);
+        }
+
+        StopAllCoroutines();
+        path.Clear();
+        path = pathFinder.GetNewPath(coordinates);
+
         if (path.Count > 0)
         {
             StartCoroutine(FollowPath());
         }
-        
-    }
-
-    void FindPath()
-    {
-        path.Clear();
-
-        path = pathFinder.GetNewPath();
     }
 
     
